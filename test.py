@@ -3,7 +3,7 @@ import tensorflow as tf
 import keras
 import glob
 
-model = keras.models.load_model('./dog_pose')
+model = keras.models.load_model('./dog_pose_v2')
 dog_images_up = glob.glob('.\\data\\val_data_set\\sigor_pose\\*')
 dog_images_down = glob.glob('.\\data\\val_data_set\\not_pose\\*')
 score = [0,0]

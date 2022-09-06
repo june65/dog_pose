@@ -41,7 +41,14 @@ model.compile(loss='binary_crossentropy',
 
 from keras.preprocessing.image import ImageDataGenerator
 
-train_datagen = ImageDataGenerator(rescale=1/255.)
+train_datagen = ImageDataGenerator(rescale = 1.0/255.,
+                                 rotation_range=40,
+                                 width_shift_range=0.2,
+                                 height_shift_range=0.2,
+                                 shear_range=0.2,
+                                 zoom_range=0.2,
+                                 horizontal_flip=True,
+                                 fill_mode='nearest')
 
 train_generator = train_datagen.flow_from_directory(
   'C:/Users/이준명/Desktop/dog_pose/data/train_data_set',
@@ -51,9 +58,9 @@ train_generator = train_datagen.flow_from_directory(
 )
 history = model.fit(
   train_generator,
-  steps_per_epoch=10,
+  steps_per_epoch=30,
   epochs=300,
   verbose=1
 )
 
-model.save('./dog_pose') 
+model.save('./dog_pose_v2') 
