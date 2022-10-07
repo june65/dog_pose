@@ -23,6 +23,12 @@ model = tf.keras.models.Sequential([
     # The fourth convolution
     tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
     tf.keras.layers.MaxPool2D(2, 2),
+    # The fifth convolution
+    tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
+    tf.keras.layers.MaxPool2D(2, 2),
+    # The sixth convolution
+    tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
+    tf.keras.layers.MaxPool2D(2, 2),
     # Flatten
     tf.keras.layers.Flatten(),
     # 512 Neuron (Hidden layer)
@@ -53,14 +59,14 @@ train_datagen = ImageDataGenerator(rescale = 1.0/255.,
 train_generator = train_datagen.flow_from_directory(
   'C:/Users/이준명/Desktop/dog_pose/data/train_data_set',
   target_size=(300, 300),
-  batch_size=64,
+  batch_size=80,
   class_mode='binary'
 )
 history = model.fit(
   train_generator,
-  steps_per_epoch=30,
+  steps_per_epoch=50,
   epochs=300,
   verbose=1
 )
 
-model.save('./dog_pose_v2') 
+model.save('./dog_pose_v3') ,
