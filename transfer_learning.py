@@ -269,11 +269,11 @@ for name, model in models.items():
 models_result = []
 
 for name, v in models.items():
-    models_result.append([ name, models[name]['val_acc'][-1], 
+    models_result.append([ name, models[name]['val_acc'][-1],
                           models[name]['acc'],
                           models[name]['perf']])
     
-df_results = pd.DataFrame(models_result, 
+df_results = pd.DataFrame(models_result,
                           columns = ['model','val_accuracy','accuracy','Training time (sec)'])
 df_results.sort_values(by='accuracy', ascending=False, inplace=True)
 df_results.reset_index(inplace=True,drop=True)
@@ -314,7 +314,7 @@ labels = dict((v,k) for k,v in labels.items())
 pred = [labels[k] for k in pred]
 
 def printmd(string):
-    # Print with Markdowns    
+    # Print with Markdowns
     display(Markdown(string))
     
 y_test = list(test_df.Label)
